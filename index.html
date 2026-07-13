@@ -472,7 +472,7 @@
   <div class="faq-item">
     <details>
       <summary>Will it work on my skin tone / hair color?<span class="chev">⌄</span></summary>
-      <div class="body">The kit comes in four shades from soft brown to black-brown, and the two-tone powder blends into a wide range of tones. Pick the shade closest to your natural brow hair.</div>
+      <div class="body">The kit comes in two two-tone shade combos — Dark Gray + Light Brown for black, dark brown and cool-toned hair, and Light Brown + Bright Brown for blonde, light brown and warm-toned hair. Each compact layers both shades so it blends into a wide range of tones.</div>
     </details>
   </div>
   <div class="faq-item">
@@ -547,17 +547,23 @@
   // dark pattern of a countdown that silently resets for every visitor.
   var SALE_END = new Date('2026-07-31T23:59:59-05:00').getTime();
 
+  // Each shade maps 1:1 to a Shopify variant. Display names are cleaned up
+  // for customers; variantId pins the exact variant so checkout never
+  // depends on the supplier's raw titles ("01Dark gray  light brown", …).
   var SHADES = [
-    { name: 'Soft Brown', hex: '#A98467', desc: 'Blonde, light brown & warm hair' },
-    { name: 'Chocolate', hex: '#7B5033', desc: 'Medium brown hair' },
-    { name: 'Dark Brown', hex: '#5C3A21', desc: 'Medium to dark brown hair' },
-    { name: 'Black Brown', hex: '#2E2018', desc: 'Black & cool-toned dark hair (softer than black)' }
+    { name: 'Dark Gray + Light Brown', hex: '#6B5D52', desc: 'Black, dark brown & cool-toned hair',
+      variantId: 'gid://shopify/ProductVariant/53718556148026' },
+    { name: 'Light Brown + Bright Brown', hex: '#A97B50', desc: 'Blonde, light brown & warm-toned hair',
+      variantId: 'gid://shopify/ProductVariant/53718556180794' }
   ];
 
+  // Fallback pricing if the live Shopify fetch fails — keep in sync with the
+  // Shopify variant price ($39.99) so the page never advertises a price
+  // checkout won't honor. Live pricing overrides these via bundleInfo().
   var BUNDLES = [
-    { qty: 1, price: 19.99, compare: 29.99, title: '1 Kit', badge: null, freeShipping: false },
-    { qty: 2, price: 29.98, compare: 59.98, title: '2 Kits', badge: 'Most Popular', freeShipping: true },
-    { qty: 3, price: 38.97, compare: 89.97, title: '3 Kits', badge: 'Best Value', freeShipping: true }
+    { qty: 1, price: 39.99, compare: 59.99, title: '1 Kit', badge: null, freeShipping: false },
+    { qty: 2, price: 59.99, compare: 119.97, title: '2 Kits', badge: 'Most Popular', freeShipping: true },
+    { qty: 3, price: 77.98, compare: 179.96, title: '3 Kits', badge: 'Best Value', freeShipping: true }
   ];
 
   var GUIDE_VALUE = 14.99;
@@ -572,8 +578,8 @@
 
   var state = {
     bundle: 0,
-    shade: 'Dark Brown',
-    shades: ['Dark Brown'],
+    shade: SHADES[0].name,
+    shades: [SHADES[0].name],
     protection: false,
     cart: [],
     cartOpen: false,
@@ -600,10 +606,15 @@
     }).catch(function(e){ console.warn('Shopify Storefront fetch failed — using local pricing.', e); });
   }
 
-  function liveVariant(){
+  function shadeByName(name){
+    return SHADES.filter(function(s){ return s.name === name; })[0] || SHADES[0];
+  }
+
+  function liveVariant(shadeName){
     if (!state.live) return null;
     var edges = (state.live.variants && state.live.variants.edges) || [];
-    var match = edges.filter(function(e){ return e.node.title.toLowerCase().indexOf(state.shade.toLowerCase()) !== -1; })[0];
+    var wanted = shadeByName(shadeName || state.shade).variantId;
+    var match = edges.filter(function(e){ return e.node.id === wanted; })[0];
     return (match || edges[0] || {}).node || null;
   }
 
@@ -681,7 +692,7 @@
         state.bundle = i;
         var qty = BUNDLES[i].qty;
         var arr = [];
-        for (var j = 0; j < qty; j++) arr.push(state.shades[j] || 'Dark Brown');
+        for (var j = 0; j < qty; j++) arr.push(state.shades[j] || SHADES[0].name);
         state.shades = arr;
         render();
       });
@@ -725,7 +736,7 @@
           var opt = document.createElement('option');
           opt.value = s.name;
           opt.textContent = s.name;
-          if ((state.shades[idx] || 'Dark Brown') === s.name) opt.selected = true;
+          if ((state.shades[idx] || SHADES[0].name) === s.name) opt.selected = true;
           select.appendChild(opt);
         });
         select.addEventListener('change', function(){
@@ -847,13 +858,12 @@
   // ---- Add to cart ----
   function addToCart(){
     var info = bundleInfo(state.bundle);
-    var v = liveVariant();
     state.cart.push({
       id: Date.now(),
       qty: info.qty,
       shades: state.shades.slice(),
       price: info.price + (state.protection ? PROTECTION_PRICE : 0),
-      variantId: v ? v.id : null
+      variantIds: state.shades.map(function(n){ var v = liveVariant(n); return v ? v.id : null; })
     });
     state.cartOpen = true;
     renderCart();
@@ -912,10 +922,20 @@
   document.getElementById('checkoutBtn').addEventListener('click', function(){
     if (state.cart.length === 0) return;
     var domain = CONFIG.shopifyDomain;
-    var withVariants = state.cart.filter(function(c){ return c.variantId; });
     var note = document.getElementById('checkoutNote');
-    if (domain && withVariants.length === state.cart.length && withVariants.length > 0) {
-      var parts = withVariants.map(function(c){ return c.variantId.split('/').pop() + ':' + c.qty; }).join(',');
+    // One cart line per kit so mixed-shade bundles check out as the right variants.
+    var counts = {};
+    var allResolved = true;
+    state.cart.forEach(function(c){
+      (c.variantIds || []).forEach(function(id){
+        if (!id) { allResolved = false; return; }
+        counts[id] = (counts[id] || 0) + 1;
+      });
+      if (!c.variantIds || c.variantIds.length !== c.qty) allResolved = false;
+    });
+    var ids = Object.keys(counts);
+    if (domain && allResolved && ids.length > 0) {
+      var parts = ids.map(function(id){ return id.split('/').pop() + ':' + counts[id]; }).join(',');
       window.open('https://' + domain + '/cart/' + parts, '_blank');
     } else {
       note.textContent = 'Connect your Shopify store (storefront domain + token above) to enable live checkout.';
