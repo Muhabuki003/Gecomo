@@ -196,19 +196,6 @@
   .review-card blockquote{margin:0;font-size:15px;line-height:1.6;color:var(--ink-2);}
 
   /* before/after slider */
-  #compare{max-width:900px;margin:0 auto;padding:20px 28px 88px;text-align:center;}
-  .ba-wrap{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;margin-top:32px;user-select:none;background:var(--cream-2);}
-  .ba-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:2px dashed var(--border-2);color:var(--muted);font-size:14px;}
-  .ba-panel .icon{font-size:30px;}
-  #baAfter{clip-path:inset(0 0 0 50%);}
-  .ba-label{position:absolute;top:16px;background:rgba(28,23,18,.75);color:var(--cream);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;}
-  #baLabelBefore{left:16px;}
-  #baLabelAfter{right:16px;}
-  #baHandle{position:absolute;top:0;bottom:0;left:50%;width:0;display:flex;align-items:center;justify-content:center;}
-  #baHandle::before{content:'';position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--white);}
-  #baGrip{width:40px;height:40px;border-radius:999px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:ew-resize;}
-  #baRange{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;}
-
   /* guarantee band */
   #guarantee{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
   #guarantee h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
@@ -265,6 +252,7 @@
     <a href="#how">How it works</a>
     <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
+    <a href="track.html">Track Order</a>
     <button id="cartBtn" type="button">Cart · <span id="cartCount">0</span></button>
   </div>
 </nav>
@@ -471,20 +459,6 @@
   <div class="review-grid" id="reviewGrid"></div>
 </section>
 
-<!-- Before / after -->
-<section id="compare">
-  <h2 style="font-size:clamp(28px,3.5vw,38px);">Drag to see the difference</h2>
-  <div class="ba-wrap">
-    <div class="ba-panel" id="baBefore"><span class="icon">📷</span>Add a "before" customer photo here</div>
-    <div class="ba-panel" id="baAfter"><span class="icon">📷</span>Add an "after" customer photo here</div>
-    <span class="ba-label" id="baLabelBefore">Before</span>
-    <span class="ba-label" id="baLabelAfter">After</span>
-    <div id="baHandle"><div id="baGrip">↔</div></div>
-    <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-  </div>
-  <!-- TODO: replace the two .ba-panel placeholders above with real before/after <img> tags once customer photos are available -->
-</section>
-
 <!-- Guarantee -->
 <section id="guarantee">
   <h2>Love your brows or it's free.</h2>
@@ -534,6 +508,7 @@
     <a href="#how">How it works</a>
     <a href="#buy">Shop</a>
     <a href="#faq">FAQ</a>
+    <a href="track.html">Track Order</a>
   </div>
   <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
 </footer>
@@ -860,20 +835,6 @@
     }
     show(0);
     setInterval(function(){ show((idx + 1) % slides.length); }, 4500);
-  })();
-
-  // ---- Before / after slider ----
-  (function(){
-    var range = document.getElementById('baRange');
-    var after = document.getElementById('baAfter');
-    var handle = document.getElementById('baHandle');
-    function update(){
-      var v = range.value;
-      after.style.clipPath = 'inset(0 0 0 ' + v + '%)';
-      handle.style.left = v + '%';
-    }
-    range.addEventListener('input', update);
-    update();
   })();
 
   // ---- Protection checkbox ----
