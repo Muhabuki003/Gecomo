@@ -142,18 +142,34 @@
   .shade-item p{font-size:14px;color:var(--body);margin:0;}
 
   /* Free guide bonus section */
-  #guide{background:var(--ink);color:var(--cream);padding:88px 0;}
-  .guide-grid{display:flex;flex-wrap:wrap;align-items:center;gap:52px;}
-  .guide-copy{flex:1 1 420px;min-width:280px;}
-  .free-badge{display:inline-block;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:6px 16px;margin-bottom:16px;}
-  #guide h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:16px;color:#FBF7F1;}
-  #guide p.desc{color:#D8CBBB;line-height:1.7;font-size:16px;max-width:460px;margin-bottom:26px;}
-  .guide-visual{flex:1 1 280px;min-width:220px;display:flex;justify-content:center;}
-  .book{width:230px;aspect-ratio:3/4;background:linear-gradient(135deg,#F4E9DC,#DCC9AF);border-radius:4px 10px 10px 4px;box-shadow:8px 8px 0 rgba(0,0,0,.25),0 20px 50px rgba(0,0,0,.35);position:relative;padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(-3deg);}
-  .book::before{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:rgba(28,23,18,.15);border-radius:4px 0 0 4px;}
-  .book .kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brown-dark);}
-  .book .title{font-family:'Marcellus',serif;font-size:22px;line-height:1.25;color:var(--ink);margin-top:10px;}
-  .book .foot{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brown-dark);}
+  #guide{background:var(--cream-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .guide-top{max-width:640px;margin:0 auto;padding:72px 28px 52px;text-align:center;}
+  .guide-kicker{display:flex;align-items:center;gap:14px;justify-content:center;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);margin:0 0 18px;}
+  .guide-kicker::before,.guide-kicker::after{content:'';flex:0 0 40px;height:1px;background:var(--ink);}
+  .guide-headline{font-family:'Marcellus',serif;font-size:clamp(52px,9vw,92px);line-height:.95;color:var(--ink);margin:0 0 22px;}
+  .guide-pill{display:inline-block;background:var(--ink);color:var(--cream);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border-radius:6px;padding:10px 20px;margin-bottom:22px;}
+  .guide-sub{font-family:'Marcellus',serif;font-size:clamp(24px,3.5vw,32px);color:var(--ink);margin:0 0 40px;}
+  .guide-sub em{font-style:italic;color:var(--brown);}
+  .guide-visual{display:flex;justify-content:center;}
+  .book{width:240px;aspect-ratio:3/4.4;background:linear-gradient(135deg,#FBF8F3,#EDE2D2);border-radius:4px 10px 10px 4px;box-shadow:10px 10px 0 rgba(28,23,18,.12),0 24px 50px rgba(28,23,18,.3);position:relative;transform:rotate(-3deg);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
+  .book::before{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:rgba(28,23,18,.15);z-index:2;}
+  .book-top{padding:30px 24px 20px;text-align:center;}
+  .book-swoosh{display:block;font-size:20px;color:var(--brown);margin-bottom:8px;}
+  .book-brand{font-family:'Marcellus',serif;font-size:18px;letter-spacing:.1em;color:var(--ink);}
+  .book-brand span{display:block;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--brown-dark);margin-top:4px;}
+  .book-title{font-family:'Marcellus',serif;color:var(--ink);margin-top:16px;font-size:14px;font-style:italic;}
+  .book-title em{display:block;font-style:normal;font-size:26px;line-height:1.15;margin-top:4px;}
+  .book-divider{width:32px;height:1px;background:var(--border-2);margin:14px auto;}
+  .book-subtitle{font-size:13px;color:var(--ink-2);}
+  .book-tagline{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brown);margin-top:10px;}
+  .book-band{background:var(--ink);color:var(--cream);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:14px;border:1px solid rgba(250,246,241,.35);margin:0 18px 20px;border-radius:2px;}
+  .guide-bottom{background:var(--ink);color:var(--cream);padding:56px 28px 64px;text-align:center;}
+  .gift-icon{width:64px;height:64px;border-radius:999px;border:1.5px solid rgba(250,246,241,.4);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 22px;}
+  .guide-bottom h3{font-size:clamp(19px,2.4vw,23px);letter-spacing:.02em;color:#FBF7F1;max-width:420px;margin:0 auto 16px;}
+  .guide-bottom p.desc{color:#D8CBBB;line-height:1.7;font-size:15px;max-width:420px;margin:0 auto 22px;}
+  .guide-rule{width:100%;max-width:420px;height:1px;background:rgba(250,246,241,.18);margin:0 auto 18px;}
+  .value-line{font-size:13px;letter-spacing:.04em;color:#D8CBBB;margin:0 0 26px;}
+  .value-line strong{color:var(--gold);}
 
   /* Accordion group */
   #included{max-width:760px;margin:0 auto;padding:88px 28px;}
@@ -380,23 +396,34 @@
 
 <!-- Free guide bonus -->
 <section id="guide">
-  <div class="wrap guide-grid">
-    <div class="guide-copy">
-      <span class="free-badge">100% Free with every kit</span>
-      <h2>The GECOMO Brow Playbook</h2>
-      <p class="desc">Our quick-start guide to finding your perfect brow shape for your face, matching your shade, and applying like a pro — a $14.99 value, yours completely free. No catch.</p>
-      <!-- TODO: once the real PDF is ready, drop it in the repo root as "gecomo-brow-playbook.pdf" and this button will serve it automatically. -->
-      <a class="btn btn-gold" href="gecomo-brow-playbook.pdf" download>Get the free guide</a>
-    </div>
+  <div class="guide-top">
+    <p class="guide-kicker">Limited Time</p>
+    <h2 class="guide-headline">Free Gift</h2>
+    <span class="guide-pill">+ Free Digital Guide</span>
+    <p class="guide-sub">Get <em>The Brow Playbook</em></p>
     <div class="guide-visual">
       <div class="book">
-        <div>
-          <div class="kicker">Gecomo · Free Guide</div>
-          <div class="title">Find Your Perfect Brow Shape</div>
+        <div class="book-top">
+          <span class="book-swoosh">〜</span>
+          <div class="book-brand">GECOMO<span>Beauty Simplified.</span></div>
+          <div class="book-title">The<em>Brow Playbook</em></div>
+          <div class="book-divider"></div>
+          <div class="book-subtitle">Find Your Perfect Brow Shape</div>
+          <div class="book-tagline">Quick. Easy. You.</div>
         </div>
-        <div class="foot">The Brow Playbook</div>
+        <div class="book-band">Your Free Guide</div>
       </div>
     </div>
+  </div>
+
+  <div class="guide-bottom">
+    <div class="gift-icon">🎁</div>
+    <h3>Your quick-start guide to perfect brows</h3>
+    <p class="desc">Our quick-start guide to finding your perfect brow shape for your face, matching your shade, and applying like a pro.</p>
+    <div class="guide-rule"></div>
+    <p class="value-line">A $14.99 value, yours <strong>completely free</strong>. No catch.</p>
+    <!-- TODO: once the real PDF is ready, drop it in the repo root as "gecomo-brow-playbook.pdf" and this button will serve it automatically. -->
+    <a class="btn btn-gold" href="gecomo-brow-playbook.pdf" download>Get the free guide →</a>
   </div>
 </section>
 
