@@ -59,16 +59,26 @@
     return list;
   }
 
-  // Auto-fill any <img data-shopify-handle="..."> with its live featured image.
+  // Auto-fill any <img data-shopify-handle="..."> with a live Shopify image.
+  //   data-shopify-index="N"  -> use the Nth image (default 0 = featured)
+  // If the product has no image at that index, the image's closest
+  // [data-shopify-window] container is hidden so we never show an empty frame.
+  // On a failed fetch the existing (fallback) src is left untouched.
   function hydrateImages(root){
     var imgs = (root || document).querySelectorAll('img[data-shopify-handle]');
     imgs.forEach(function(img){
       var handle = img.getAttribute('data-shopify-handle');
+      var idx = parseInt(img.getAttribute('data-shopify-index') || '0', 10);
       fetchProduct(handle).then(function(p){
-        var imgs = imageList(p);
-        if (imgs.length) {
-          img.src = imgs[0].url;
-          if (imgs[0].altText) img.alt = imgs[0].altText;
+        if (!p) return; // keep whatever fallback src is already in the HTML
+        var list = imageList(p);
+        var pick = list[idx];
+        if (pick && pick.url) {
+          img.src = pick.url;
+          if (pick.altText) img.alt = pick.altText;
+        } else {
+          var box = img.closest('[data-shopify-window]');
+          if (box) box.style.display = 'none'; else img.style.display = 'none';
         }
       });
     });

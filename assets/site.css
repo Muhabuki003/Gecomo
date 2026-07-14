@@ -215,6 +215,28 @@ header.pdp-hero .scrim{position:absolute;inset:0;background:linear-gradient(to b
 .how-grid h3{font-size:22px;margin:12px 0 8px;}
 .how-grid p{color:var(--body);line-height:1.6;}
 
+/* ---- Editorial image windows (each pulls one live Shopify image) ---- */
+.img-window{position:relative;overflow:hidden;background:var(--cream-2);border-radius:18px;}
+.img-window img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.img-window:hover img{transform:scale(1.04);}
+
+/* three-up detail strip */
+.gallery-strip{max-width:1100px;margin:0 auto;padding:12px 28px 40px;}
+.gallery-strip .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;}
+.gallery-strip .grid .img-window{aspect-ratio:4/5;}
+@media (max-width:720px){ .gallery-strip .grid{grid-template-columns:1fr 1fr;} .gallery-strip .grid .img-window:nth-child(3){grid-column:1 / -1;aspect-ratio:16/9;} }
+
+/* full-width cinematic band with caption */
+.editorial-band{max-width:1240px;margin:0 auto;padding:40px 28px 88px;}
+.editorial-band .frame{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:21/9;background:var(--cream-2);}
+.editorial-band .frame img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.editorial-band .frame:hover img{transform:scale(1.03);}
+.editorial-band .scrim{position:absolute;inset:0;background:linear-gradient(to right,rgba(20,15,11,.62),rgba(20,15,11,.12) 55%,transparent);pointer-events:none;}
+.editorial-band .cap{position:absolute;left:clamp(24px,4vw,56px);bottom:clamp(24px,4vw,48px);max-width:440px;}
+.editorial-band .cap h3{font-size:clamp(24px,3vw,34px);margin:0 0 8px;color:#FBF7F1;text-shadow:0 2px 20px rgba(20,15,11,.5);}
+.editorial-band .cap p{color:#F1E9DD;line-height:1.6;text-shadow:0 1px 14px rgba(20,15,11,.5);}
+@media (max-width:720px){ .editorial-band .frame{aspect-ratio:4/5;} .editorial-band .scrim{background:linear-gradient(to top,rgba(20,15,11,.7),rgba(20,15,11,.1) 55%,transparent);} }
+
 /* Free guide bonus section */
 #guide{background:var(--cream-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .guide-top{max-width:640px;margin:0 auto;padding:72px 28px 52px;text-align:center;}
