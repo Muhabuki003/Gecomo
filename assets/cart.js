@@ -31,12 +31,29 @@
 
   var cart = load();
 
-  // ---- Inject drawer + overlay once, at the end of <body> ----
+  // ---- Inject drawers + overlay once, at the end of <body> ----
   function injectMarkup(){
     if (document.getElementById('cartDrawer')) return;
     var wrap = document.createElement('div');
     wrap.innerHTML =
       '<div id="overlay"></div>' +
+      '<aside id="menuDrawer" aria-label="Menu">' +
+        '<div class="menu-head"><a href="index.html" class="logo">GECOMO</a><button id="closeMenu" type="button" aria-label="Close menu">&times;</button></div>' +
+        '<nav class="menu-links">' +
+          '<a href="bestsellers.html">Bestsellers</a>' +
+          '<a href="index.html#shop">Shop All</a>' +
+          '<a href="stamp.html">Brow Stamp</a>' +
+          '<a href="pencil.html">Brow Pencil</a>' +
+          '<a href="index.html#sets">Sets + Duos</a>' +
+          '<a href="stamp.html#shades">Find My Shade</a>' +
+        '</nav>' +
+        '<nav class="menu-sub">' +
+          '<a href="track.html">Track Order</a>' +
+          '<a href="stamp.html#faq">FAQ</a>' +
+          '<a href="index.html#guarantee">60-Day Guarantee</a>' +
+          '<a href="stamp.html#guide">Free Brow Playbook</a>' +
+        '</nav>' +
+      '</aside>' +
       '<aside id="cartDrawer">' +
         '<div class="cart-head"><h3>Your cart</h3><button id="closeCart" type="button">&times;</button></div>' +
         '<div id="cartItems"></div>' +
@@ -99,6 +116,7 @@
 
   function open(){
     var e = els();
+    closeMenu();
     if (e.overlay) e.overlay.classList.add('show');
     if (e.drawer) e.drawer.classList.add('show');
   }
@@ -107,6 +125,23 @@
     if (e.overlay) e.overlay.classList.remove('show');
     if (e.drawer) e.drawer.classList.remove('show');
     if (e.note) e.note.style.display = 'none';
+  }
+
+  // ---- Mobile menu drawer ----
+  function openMenu(){
+    close();
+    var overlay = document.getElementById('overlay');
+    var menu = document.getElementById('menuDrawer');
+    if (overlay) overlay.classList.add('show');
+    if (menu) menu.classList.add('show');
+  }
+  function closeMenu(){
+    var menu = document.getElementById('menuDrawer');
+    if (menu) menu.classList.remove('show');
+  }
+  function closeAll(){
+    closeMenu();
+    close();
   }
 
   function checkout(){
@@ -151,13 +186,17 @@
   function init(){
     injectMarkup();
     var e = els();
-    if (e.overlay) e.overlay.addEventListener('click', close);
+    if (e.overlay) e.overlay.addEventListener('click', closeAll);
     var closeBtn = document.getElementById('closeCart');
     if (closeBtn) closeBtn.addEventListener('click', close);
     var checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
     var cartBtn = document.getElementById('cartBtn');
     if (cartBtn) cartBtn.addEventListener('click', open);
+    var menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    var closeMenuBtn = document.getElementById('closeMenu');
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeAll);
     renderCart();
     updateCount();
   }
