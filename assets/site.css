@@ -50,7 +50,7 @@ details[open] .chev{transform:rotate(180deg);}
 /* --- Sticky top stack: sale bar -> tagline -> nav --- */
 #saleBar{position:sticky;top:0;z-index:60;background:var(--ink);color:var(--cream);text-align:center;padding:10px 16px;font-size:13px;letter-spacing:.06em;}
 #saleBar strong{background:rgba(217,163,86,.22);border:1px solid var(--gold);border-radius:6px;padding:2px 9px;font-variant-numeric:tabular-nums;margin:0 2px;}
-#tagline{position:sticky;top:38px;z-index:59;background:var(--cream);text-align:center;padding:7px 16px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
+#tagline{position:sticky;top:38px;z-index:59;background:var(--cream);text-align:center;padding:7px 16px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);}
 nav{position:sticky;top:70px;z-index:58;background:rgba(250,246,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 28px;}
 /* Order tracking page has no sale bar/tagline, so its nav sits at the top */
 nav.nav-top{top:0;}
@@ -81,7 +81,7 @@ nav.nav-top{top:0;}
 .home-hero video,.home-hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;}
 /* Soft warm gradient — only enough to seat the type, keeps the film's colour alive */
 .home-hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,11,.78) 0%,rgba(20,15,11,.34) 26%,rgba(20,15,11,.04) 52%,transparent 72%);}
-.home-hero .inner{position:relative;max-width:1160px;margin:0 auto;padding:0 40px clamp(48px,8vh,104px);width:100%;}
+.home-hero .inner{position:relative;padding:0 28px clamp(48px,8vh,104px);width:100%;}
 .home-hero .hero-kicker{font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#F0E7DA;margin:0 0 18px;opacity:.92;}
 .home-hero .hero-wordmark{font-family:'Marcellus',serif;font-size:clamp(56px,11vw,140px);line-height:.92;letter-spacing:.12em;color:#FBF7F1;margin:0 0 22px;text-shadow:0 2px 40px rgba(20,15,11,.45);}
 .home-hero p.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#F1E9DD;margin:0 0 32px;max-width:520px;text-shadow:0 1px 16px rgba(20,15,11,.5);}
@@ -96,13 +96,12 @@ nav.nav-top{top:0;}
   .home-hero .hero-wordmark{letter-spacing:.08em;}
 }
 @media (min-width:1440px){
-  .home-hero .inner{max-width:1360px;padding:0 64px clamp(64px,9vh,128px);}
+  .home-hero .inner{padding:0 48px clamp(64px,9vh,128px);}
   .home-hero .hero-kicker{font-size:15px;}
   .home-hero .hero-wordmark{font-size:clamp(120px,9.5vw,180px);}
   .home-hero p.lead{font-size:clamp(20px,1.3vw,24px);max-width:620px;}
 }
 @media (min-width:1920px){
-  .home-hero .inner{max-width:1560px;}
   .home-hero .hero-wordmark{font-size:clamp(150px,8.5vw,210px);}
 }
 
