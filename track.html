@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=4">
+<link rel="stylesheet" href="assets/site.css?v=5">
 <style>
   /* Hero with animated route */
   #hero{position:relative;padding:76px 28px 40px;text-align:center;overflow:hidden;}
@@ -70,24 +70,29 @@
 </head>
 <body>
 
-<div id="saleBar">Every order ships within 24h · Real-time tracking · 60-day guarantee</div>
+<div id="promoBar"><a href="stamp.html#guide">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
 
 <header class="site-head">
   <div class="masthead">
-    <div class="mast-side left"><a href="track.html">Track Order</a></div>
+    <button id="menuBtn" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
     <a href="index.html" class="logo">GECOMO</a>
-    <div class="mast-side right"><button id="cartBtn" type="button">Cart · <span id="cartCount">0</span></button></div>
+    <div class="mast-icons">
+      <a class="mast-link" href="track.html">Track Order</a>
+      <button id="cartBtn" type="button" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span id="cartCount">0</span>
+      </button>
+    </div>
   </div>
-          <nav class="navrow">
-    <a href="index.html">Shop All</a>
-    <a href="index.html#bestsellers">Bestsellers</a>
-    <a href="stamp.html">Brow Stamp</a>
-    <a href="pencil.html">Brow Pencil</a>
-    <a href="track.html" class="active">Track Order</a>
+  <nav class="navrow">
+    <a href="bestsellers.html">Bestsellers</a>
+    <a href="index.html#shop">All</a>
+    <a href="index.html#sets">Sets</a>
+    <a href="stamp.html#shades">Find My Shade</a>
   </nav>
 </header>
 
-<div id="tagline">Natural Brows. Instant Confidence.</div>
+<div id="launchBar">Every order ships within 24h | <a href="track.html">Real-time tracking</a></div>
 
 <section id="hero">
   <p class="eyebrow">Order status</p>
@@ -238,7 +243,7 @@
   <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/cart.js?v=3"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/cart.js?v=4"></script>
 
 <script>
 (function(){

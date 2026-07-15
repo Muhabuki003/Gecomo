@@ -4,35 +4,45 @@ Every file below is already referenced by the site. Upload the file at the
 exact name listed and it appears automatically — until then the page shows a
 dashed placeholder printed with the filename.
 
-## Homepage (`index.html`)
+## Homepage (`index.html`) — ILIA-style layout
+
+### Bestsellers rail (product cards, portrait 4:5)
+| File | Card |
+|---|---|
+| *(live from Shopify)* | Double Seal Brow Stamp Kit |
+| *(live from Shopify)* | Waterproof Brow Pencil |
+| `product-duo.jpg` | The Brow Duo — Stamp + Pencil set |
+| `product-playbook.jpg` | The Brow Playbook (free gift) |
+
+### Shop by Category tiles (portrait 3:4)
+| File | Tile |
+|---|---|
+| `cat-stamps.jpg` | Brow Stamps |
+| `cat-pencils.jpg` | Brow Pencils |
+| `cat-sets.jpg` | Sets + Duos |
+| `cat-playbook.jpg` | The Playbook |
+
+### New Arrivals editorial band (wide 21:9 desktop / 4:5 mobile crop)
+| File | Slot |
+|---|---|
+| `home-launch.jpg` | Full-width launch image (uploaded ✓) |
+
+### Find My Shade band (square 1:1)
+| File | Slot |
+|---|---|
+| `home-shade.jpg` | Shade-finder split-band image |
 
 ### #GECOMO shoppable video strip (vertical 9:16 clips)
 | File | Slot | Product linked |
 |---|---|---|
-| `ugc1.mp4` | Video 1 | Brow Stamp |
-| `ugc2.mp4` | Video 2 | Brow Pencil |
-| `ugc3.mp4` | Video 3 | Brow Stamp |
-| `ugc4.mp4` | Video 4 | Brow Pencil |
-| `ugc5.mp4` | Video 5 | Brow Stamp |
-
-### Category tiles (portrait 3:4)
-| File | Tile |
-|---|---|
-| `cat-bestsellers.jpg` | Bestsellers |
-| `cat-stamp.jpg` | Brow Stamp |
-| `cat-pencil.jpg` | Brow Pencil |
-| `cat-guide.jpg` | Free Guide |
-
-### Latest launch band (wide 21:9)
-| File | Slot |
-|---|---|
-| `home-launch.jpg` | "Our Latest Launch" full-width image |
+| `ugc1.mp4` | Video (uploaded ✓) | Brow Stamp |
+| `ugc2.mp4` | Video (uploaded ✓) | Brow Pencil |
 
 ### Review photos (landscape ~4:3)
 | File | Review card |
 |---|---|
-| `home-review1.jpg` | Danielle R. |
-| `home-review2.jpg` | Rachel M. |
+| `home-review1.jpg` | Danielle R. (uploaded ✓) |
+| `home-review2.jpg` | Rachel M. (uploaded ✓) |
 | `home-review3.jpg` | Maya T. |
 
 ## Brow Stamp page (`stamp.html`)
