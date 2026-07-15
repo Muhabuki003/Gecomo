@@ -359,11 +359,13 @@
   var GUIDE_VALUE = 14.99;
   var PROTECTION_PRICE = 1.98;
 
+  // media: customer photo/video for the card — upload the file at that exact
+  // path in the repo and it appears automatically (placeholder shows until then).
   var REVIEWS = [
-    { name: 'Rachel M.', stars: 5, date: 'Jul 8, 2026', text: "The tip is so fine it actually looks like individual brow hairs. And it did not budge at the beach." },
-    { name: 'Sofia L.', stars: 5, date: 'Jul 4, 2026', text: "Love that it's a pencil and a liner. I keep one in my bag and use it for both. Black Brown is perfect for me." },
-    { name: 'Nina P.', stars: 4, date: 'Jun 30, 2026', text: "Takes a couple strokes to build but the payoff is really natural. Stayed on through a sweaty commute." },
-    { name: 'Amara K.', stars: 5, date: 'Jun 25, 2026', text: "Finally a pencil that doesn't smudge into my under-brow by noon. The spoolie end blends it beautifully." }
+    { name: 'Rachel M.', stars: 5, date: 'Jul 8, 2026', text: "The tip is so fine it actually looks like individual brow hairs. And it did not budge at the beach.", media: 'assets/media/pencil-review1.jpg' },
+    { name: 'Sofia L.', stars: 5, date: 'Jul 4, 2026', text: "Love that it's a pencil and a liner. I keep one in my bag and use it for both. Black Brown is perfect for me.", media: 'assets/media/pencil-review2.jpg' },
+    { name: 'Nina P.', stars: 4, date: 'Jun 30, 2026', text: "Takes a couple strokes to build but the payoff is really natural. Stayed on through a sweaty commute.", media: 'assets/media/pencil-review3.jpg' },
+    { name: 'Amara K.', stars: 5, date: 'Jun 25, 2026', text: "Finally a pencil that doesn't smudge into my under-brow by noon. The spoolie end blends it beautifully.", media: 'assets/media/pencil-review4.jpg' }
   ];
 
   var state = { bundle: 0, shade: SHADES[0].name, shades: [SHADES[0].name], protection: false, live: null, image: PRODUCT_IMAGE };
@@ -560,7 +562,12 @@
       card.innerHTML =
         '<div class="rhead"><span class="rname">' + r.name + '</span><span class="rdate">· ' + r.date + '</span></div>' +
         '<div class="rstars">' + stars(r.stars) + '</div>' +
-        '<blockquote>"' + r.text + '"</blockquote>';
+        '<blockquote>"' + r.text + '"</blockquote>' +
+        (r.media
+          ? '<div class="media-slot rphoto" data-file="' + r.media + '">' +
+              '<img src="' + r.media + '" alt="Customer photo — ' + r.name + '" loading="lazy" onerror="this.classList.add(\'media-missing\')">' +
+            '</div>'
+          : '');
       grid.appendChild(card);
     });
   })();

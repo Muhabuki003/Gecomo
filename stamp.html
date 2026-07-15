@@ -352,11 +352,13 @@
   var GUIDE_VALUE = 14.99;
   var PROTECTION_PRICE = 1.98;
 
+  // media: customer photo/video for the card — upload the file at that exact
+  // path in the repo and it appears automatically (placeholder shows until then).
   var REVIEWS = [
-    { name: 'Danielle R.', stars: 5, date: 'Jul 2, 2026', text: "I've never been able to do my brows evenly. This took literally seconds and they matched. I'm shocked." },
-    { name: 'Maya T.', stars: 5, date: 'Jun 28, 2026', text: "Cut my morning routine by 15 minutes. The two-tone powder actually looks like real brow hairs, not a stamp." },
-    { name: 'Priya K.', stars: 4, date: 'Jun 26, 2026', text: "Took two tries to line up right, but now it's foolproof. Survived a full gym session without smudging." },
-    { name: 'Jordan S.', stars: 5, date: 'Jun 20, 2026', text: "The reusable stamps are genius — I don't even need a mirror anymore." }
+    { name: 'Danielle R.', stars: 5, date: 'Jul 2, 2026', text: "I've never been able to do my brows evenly. This took literally seconds and they matched. I'm shocked.", media: 'assets/media/stamp-review1.jpg' },
+    { name: 'Maya T.', stars: 5, date: 'Jun 28, 2026', text: "Cut my morning routine by 15 minutes. The two-tone powder actually looks like real brow hairs, not a stamp.", media: 'assets/media/stamp-review2.jpg' },
+    { name: 'Priya K.', stars: 4, date: 'Jun 26, 2026', text: "Took two tries to line up right, but now it's foolproof. Survived a full gym session without smudging.", media: 'assets/media/stamp-review3.jpg' },
+    { name: 'Jordan S.', stars: 5, date: 'Jun 20, 2026', text: "The reusable stamps are genius — I don't even need a mirror anymore.", media: 'assets/media/stamp-review4.jpg' }
   ];
 
   var state = { bundle: 0, shade: SHADES[0].name, shades: [SHADES[0].name], protection: false, live: null, image: PRODUCT_IMAGE };
@@ -531,7 +533,12 @@
       card.innerHTML =
         '<div class="rhead"><span class="rname">' + r.name + '</span><span class="rdate">· ' + r.date + '</span></div>' +
         '<div class="rstars">' + stars(r.stars) + '</div>' +
-        '<blockquote>"' + r.text + '"</blockquote>';
+        '<blockquote>"' + r.text + '"</blockquote>' +
+        (r.media
+          ? '<div class="media-slot rphoto" data-file="' + r.media + '">' +
+              '<img src="' + r.media + '" alt="Customer photo — ' + r.name + '" loading="lazy" onerror="this.classList.add(\'media-missing\')">' +
+            '</div>'
+          : '');
       grid.appendChild(card);
     });
   })();
