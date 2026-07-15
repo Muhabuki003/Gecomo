@@ -12,7 +12,7 @@ dashed placeholder printed with the filename.
 | *(live from Shopify)* | Double Seal Brow Stamp Kit |
 | *(live from Shopify)* | Waterproof Brow Pencil |
 | `product-duo.jpg` | The Brow Duo — Stamp + Pencil set |
-| `product-playbook.jpg` | The Brow Playbook (free gift) |
+| `product-playbook.jpg` | The Brow Playbook (free gift) — also shown in the free-gift offer box on `stamp.html` and `pencil.html` |
 
 ### Shop by Category tiles (portrait 3:4)
 | File | Tile |
