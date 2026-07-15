@@ -462,15 +462,14 @@
   var DOMAIN = 'ehh05e-7q.myshopify.com';
   var TOKEN  = '40d6d0459487c81052405c45b704f6fc';
 
-  // Add more UGC clips here as { video, handle }. Each card pulls its product
-  // image / title / price live from Shopify by handle. Reusing the two demo
-  // clips for now — drop new .mp4 files in the repo and list them below.
+  // UGC clips alternating between stamp and pencil products.
+  // Drop new .mp4 files in assets/media/ and add them below.
   var ITEMS = [
-    { video: 'gemini_generated_video_2EE05D3F.mp4', handle: 'eyebrow-makeup-stamp' },
-    { video: 'hero-video.mp4',                      handle: 'eyebrow-makeup-stamp' },
-    { video: 'gemini_generated_video_2EE05D3F.mp4', handle: 'eyebrow-makeup-stamp' },
-    { video: 'hero-video.mp4',                      handle: 'eyebrow-makeup-stamp' },
-    { video: 'gemini_generated_video_2EE05D3F.mp4', handle: 'eyebrow-makeup-stamp' }
+    { video: 'assets/media/ugc2.mp4',                handle: 'waterproof-dual-ended-eyebrow-pencil' },
+    { video: 'assets/media/ugc1.mp4',                handle: 'eyebrow-makeup-stamp' },
+    { video: 'gemini_generated_video_2EE05D3F.mp4',  handle: 'waterproof-dual-ended-eyebrow-pencil' },
+    { video: 'assets/media/ugc1.mp4',                handle: 'eyebrow-makeup-stamp' },
+    { video: 'hero-video.mp4',                       handle: 'waterproof-dual-ended-eyebrow-pencil' }
   ];
 
   var FALLBACK = {
