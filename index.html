@@ -25,7 +25,7 @@
   .ugc-btn{width:40px;height:40px;border-radius:999px;border:none;background:rgba(28,23,18,.5);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;padding:0;}
   .ugc-btn:hover{background:rgba(28,23,18,.82);}
   .ugc-btn svg{width:17px;height:17px;display:block;fill:#fff;}
-  .ugc-product{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;gap:10px;background:rgba(250,246,241,.94);backdrop-filter:blur(8px);border-radius:14px;padding:8px;box-shadow:0 6px 16px rgba(28,23,18,.18);text-align:left;}
+  .ugc-product{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;gap:10px;background:rgba(250,246,241,.94);backdrop-filter:blur(8px);border-radius:14px;padding:8px;box-shadow:0 6px 16px rgba(28,23,18,.18);text-align:left;cursor:pointer;}
   .ugc-product img{width:46px;height:46px;border-radius:10px;object-fit:cover;flex:0 0 auto;background:#fff;border:1px solid var(--border-2);}
   .ugc-product .info{flex:1;min-width:0;}
   .ugc-product .pname{display:block;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25;}
@@ -402,11 +402,27 @@
     { video: 'assets/media/ugc2.mp4',                handle: 'waterproof-dual-ended-eyebrow-pencil' }
   ];
 
+  // Product lookup for quick add-to-cart (by handle)
+  var PRODUCTS = {
+    'eyebrow-makeup-stamp': {
+      title: 'Eyebrow Makeup Stamp',
+      image: 'https://cdn.shopify.com/s/files/1/1010/2482/5658/files/8f50a6be-0b47-43d4-808f-1f85749d0d1c.jpg?v=1783729321',
+      price: 39.99,
+      variantId: 'gid://shopify/ProductVariant/53718556148026'
+    },
+    'waterproof-dual-ended-eyebrow-pencil': {
+      title: 'Dual Eyebrow Pencil',
+      image: 'https://cdn.shopify.com/s/files/1/1010/2482/5658/files/1414F980-CA19-4D74-A6BA-4CB25DD54245.png?v=1784048173',
+      price: 29.99,
+      variantId: 'gid://shopify/ProductVariant/53733408473402'
+    }
+  };
+
   var FALLBACK = {
     img: 'E908F214-3FA3-4207-B490-FC76742D6EA2.png',
     title: 'Double Seal Stamp Kit',
     price: '$39.99',
-    url: 'stamp.html'
+    url: '#buy'
   };
 
   var ICON = {
@@ -477,28 +493,49 @@
     controls.appendChild(playBtn);
     card.appendChild(controls);
 
-    // product window
-    var prod = document.createElement('a');
+    // product window (div, not a link — the + button adds to cart)
+    var prod = document.createElement('div');
     prod.className = 'ugc-product';
-    prod.href = FALLBACK.url;
     prod.innerHTML =
       '<img alt="" src="' + FALLBACK.img + '">' +
       '<span class="info"><span class="pname">' + FALLBACK.title + '</span>' +
       '<span class="pprice">' + FALLBACK.price + '</span></span>' +
-      '<span class="padd" aria-label="Shop this">+</span>';
+      '<span class="padd" aria-label="Add to cart">+</span>';
     card.appendChild(prod);
 
     stage.appendChild(card);
 
-    var rec = { el: card, video: video, muteBtn: muteBtn, playBtn: playBtn, prod: prod };
+    var rec = { el: card, video: video, muteBtn: muteBtn, playBtn: playBtn, prod: prod, handle: it.handle };
     cards.push(rec);
 
     // fill product info from Shopify
     fetchProduct(it.handle).then(function(info){
-      prod.href = info.url;
       prod.querySelector('img').src = info.img;
       prod.querySelector('.pname').textContent = info.title;
       prod.querySelector('.pprice').textContent = info.price;
+    });
+
+    // + button adds to collapsible cart
+    prod.querySelector('.padd').addEventListener('click', function(e){
+      e.stopPropagation();
+      var p = PRODUCTS[rec.handle];
+      if (!p) return;
+      if (typeof GecomoCart !== 'undefined') {
+        GecomoCart.add({
+          title: p.title,
+          image: p.image,
+          meta: p.price < 35 ? 'Single' : 'Kit',
+          price: p.price,
+          lines: [{ variantId: p.variantId, qty: 1 }]
+        });
+      }
+    });
+
+    // clicking the product info opens the product page in a new tab
+    prod.addEventListener('click', function(e){
+      if (e.target.closest('.padd')) return;
+      var p = PRODUCTS[rec.handle];
+      if (p) window.open('/products/' + rec.handle, '_blank');
     });
 
     // interactions
