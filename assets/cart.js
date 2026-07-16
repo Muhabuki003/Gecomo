@@ -40,7 +40,6 @@
       '<aside id="menuDrawer" aria-label="Menu">' +
         '<div class="menu-head"><a href="index.html" class="logo">GECOMO</a><button id="closeMenu" type="button" aria-label="Close menu">&times;</button></div>' +
         '<nav class="menu-links">' +
-          '<a href="bestsellers.html">Bestsellers</a>' +
           '<a href="index.html#shop">Shop All</a>' +
           '<a href="stamp.html">Brow Stamp</a>' +
           '<a href="pencil.html">Brow Pencil</a>' +
