@@ -9,54 +9,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=4">
 </head>
 <body>
 
-<div id="promoBar"><a href="stamp.html#guide">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
+<!-- Sale bar — update SALE_END in the script below for each real promo -->
+<div id="saleBar">Summer Sale — ends in <strong id="cd-h">--</strong>:<strong id="cd-m">--</strong>:<strong id="cd-s">--</strong></div>
 
 <header class="site-head">
   <div class="masthead">
-    <button id="menuBtn" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div class="mast-side left"><a href="track.html">Track Order</a></div>
     <a href="index.html" class="logo">GECOMO</a>
-    <div class="mast-icons">
-      <a class="mast-link" href="track.html">Track Order</a>
-      <button id="cartBtn" type="button" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
-        <span id="cartCount">0</span>
-      </button>
-    </div>
+    <div class="mast-side right"><button id="cartBtn" type="button">Cart · <span id="cartCount">0</span></button></div>
   </div>
-  <nav class="navrow">
-    <a href="bestsellers.html">Bestsellers</a>
-    <a href="index.html#shop">All</a>
-    <a href="index.html#sets">Sets</a>
-    <a href="stamp.html#shades">Find My Shade</a>
+          <nav class="navrow">
+    <a href="index.html">Shop All</a>
+    <a href="index.html#bestsellers">Bestsellers</a>
+    <a href="stamp.html" class="active">Brow Stamp</a>
+    <a href="pencil.html">Brow Pencil</a>
+    <a href="track.html">Track Order</a>
   </nav>
 </header>
 
-<div id="launchBar">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
+<div id="tagline">Natural Brows. Instant Confidence.</div>
 
-<!-- PDP top (ILIA anatomy): breadcrumb -> badge/title/price/rating -> gallery -> buy controls -->
-<section id="buy" class="pdp-buy">
-  <div class="wrap pdp-grid">
-
-    <div class="pdp-head">
-      <nav class="crumbs"><a href="index.html">Home</a><span>›</span><a href="index.html#shop">Brows</a><span>›</span><span>Brow Stamp</span></nav>
-      <span class="pdp-badge">Best Seller</span>
-      <h1 class="pdp-name">Double Seal Brow Stamp Kit</h1>
-      <div class="pdp-price"><span id="heroPrice">$39.99</span> <del>$59.99</del> <span class="cur">USD</span></div>
-      <a class="pdp-rating" href="#reviews">4.8 <span class="rs">★★★★★</span> <u>2,300+ Reviews</u> ↓</a>
+<!-- Hero -->
+<header id="top" class="pdp-hero">
+  <video autoplay muted loop playsinline poster="E908F214-3FA3-4207-B490-FC76742D6EA2.png">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="hero-copy">
+    <div class="hero-badge">★★★★★ &nbsp;4.8 — 2,300+ verified reviews</div>
+    <h1>Perfect brows in 10 seconds. Stamp, press, done.</h1>
+    <p>The GECOMO Double Seal stamp kit gives you salon-shaped, natural-looking eyebrows — no pencil skills, no 20-minute mirror sessions.</p>
+    <div class="hero-cta">
+      <a href="#buy" class="btn btn-gold">Shop the kit — <span id="heroPrice">$39.99</span></a>
+      <span>Ships within 24h · Cruelty-free</span>
     </div>
+  </div>
+</header>
 
-    <div class="pdp-gallery">
-      <div class="gallery-main">
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>10-second application</span><span>·</span><span>Smudge-proof all day</span><span>·</span><span>3 brow shapes included</span><span>·</span><span>Free brow playbook included</span><span>·</span><span>60-day guarantee</span><span>·</span>
+    <span>10-second application</span><span>·</span><span>Smudge-proof all day</span><span>·</span><span>3 brow shapes included</span><span>·</span><span>Free brow playbook included</span><span>·</span><span>60-day guarantee</span><span>·</span>
+  </div>
+</div>
+
+<!-- Buy section -->
+<section id="buy">
+  <div class="wrap buy-grid">
+    <div class="buy-media">
+      <div class="card">
         <img id="mainImg" src="E908F214-3FA3-4207-B490-FC76742D6EA2.png" alt="GECOMO Double Seal eyebrow powder stamp — three shades">
       </div>
     </div>
 
-    <div class="pdp-controls">
-      <div class="divider-label">Choose your kit</div>
+    <div class="buy-content">
+      <div class="eyebrow">GECOMO · Double Seal</div>
+      <h1 class="pdp-title">Perfect Eyebrows in 10 Seconds</h1>
+
+      <ul class="feature-list">
+        <li>✨ <span><b>Symmetrical, natural-looking</b> brows</span></li>
+        <li>💧 <span><b>Smudge-proof</b> — lasts all day</span></li>
+        <li>🖌️ <span><b>Reusable stamps</b> + dual-tip brush included</span></li>
+        <li>✅ <span><b>Beginner friendly</b> · works on all skin tones</span></li>
+      </ul>
+
+      <div class="divider-label">Limited time offer</div>
 
       <div id="bundleList"></div>
 
@@ -65,29 +86,13 @@
         <label for="protection">Add Shipping Protection — <strong>$1.98</strong> (covers lost or damaged packages)</label>
       </div>
 
-      <div class="offer-box">
-        <div class="ob-media media-slot" data-file="assets/media/product-playbook.jpg">
-          <img src="assets/media/product-playbook.jpg" alt="The GECOMO Brow Playbook" onerror="this.classList.add('media-missing')">
-        </div>
-        <p><b>Free with every kit</b> — The Brow Playbook, our step-by-step guide to your best natural brows ($19 value).</p>
+      <button id="addToCart" class="btn btn-gold" type="button">Add to cart — <span id="atcPrice">$39.99</span></button>
+      <div class="guarantee-row">
+        <span>✓ 60-day guarantee</span>
+        <span>✓ Ships in 24h</span>
+        <span>✓ Secure checkout</span>
       </div>
-
-      <button id="addToCart" class="btn btn-gold" type="button">Add to Bag — <span id="atcPrice">$39.99</span></button>
-      <div class="perk-list">
-        <span>✓ 60-day money-back guarantee</span>
-        <span>✓ Ships within 24h</span>
-        <span>✓ Free + easy returns</span>
-      </div>
-      <p id="liveNote" style="display:none;margin:14px 0 0;font-size:13px;color:var(--brown);text-align:left;"></p>
-
-      <details class="pdp-desc" open>
-        <summary>Description <span class="chev">▾</span></summary>
-        <div class="body">Salon-shaped, natural-looking eyebrows in 10 seconds — no pencil skills, no 20-minute mirror sessions. <b>Symmetrical, natural-looking</b> brows with a <b>smudge-proof</b> finish that lasts all day. Includes <b>reusable stamps</b> in three shapes plus a dual-tip brush. <b>Beginner friendly</b> and works on all skin tones.</div>
-      </details>
-      <details class="pdp-desc" style="border-bottom:1px solid var(--border-2);">
-        <summary>What's in the box <span class="chev">▾</span></summary>
-        <div class="body">Double Seal two-tone brow powder, 3 reusable stamp shapes (Korean arch, natural, one-word straight), dual-tip detail brush, and the free Brow Playbook.</div>
-      </details>
+      <p id="liveNote" style="display:none;margin:14px 0 0;font-size:13px;color:var(--brown);text-align:center;"></p>
 
       <div class="mini-carousel">
         <div class="avatar" id="mcAvatar">A</div>
@@ -98,7 +103,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -158,12 +162,27 @@
 </section>
 
 <!-- Shade finder -->
-<section id="shades">
-  <p class="eyebrow">Not sure which shade is right for you? 👇</p>
-  <h2 style="font-size:clamp(28px,3.5vw,38px);margin-bottom:28px;">Match your natural hair color</h2>
-  <div class="shade-box">
-    <p>When in doubt, go one shade lighter for the most natural look.</p>
-    <div id="shadeFinderList"></div>
+<!-- Shade finder — ILIA-style arm swatch + color dots -->
+<section id="shade" class="shade-band">
+  <div class="media" style="position:relative;">
+    <img id="shadeArmImg" src="assets/media/arm-swatch.jpg"
+         alt="GECOMO brow stamp shades swatched on skin — Dark Brown and Light Brown"
+         loading="lazy">
+    <div class="swatch-selector">
+      <button class="shade-btn active" data-shade="Dark Brown"
+              style="background:#5C4A3D" title="Dark Brown — for black, dark brown &amp; cool-toned hair"></button>
+      <button class="shade-btn" data-shade="Light Brown"
+              style="background:#A97B50" title="Light Brown — for blonde, light brown &amp; warm-toned hair"></button>
+    </div>
+  </div>
+  <div class="copy">
+    <p class="eyebrow">Find Your Shade</p>
+    <h2>Two shades. One perfect match.</h2>
+    <p>Dark Brown works best for black, dark brown and cool-toned hair. Light Brown is ideal for blonde, light brown and warm-toned hair. <strong>When in doubt, go one shade lighter</strong> — the two-tone powder builds depth naturally.</p>
+    <div class="shade-detail">
+      <div class="shade-name" id="sdName">Dark Brown</div>
+      <div class="shade-match" id="sdMatch">For black, dark brown &amp; cool-toned hair</div>
+    </div>
   </div>
 </section>
 
@@ -340,7 +359,7 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/shopify.js?v=3"></script>
-<script src="assets/cart.js?v=4"></script>
+<script src="assets/cart.js?v=3"></script>
 <script>
 (function(){
   "use strict";
@@ -432,15 +451,13 @@
 
   // ---- Countdown ----
   function updateCountdown(){
-    var eh = document.getElementById('cd-h'), em = document.getElementById('cd-m'), es = document.getElementById('cd-s');
-    if (!eh || !em || !es) return;
     var diff = SALE_END - Date.now(); if (diff < 0) diff = 0;
     var h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
-    eh.textContent = String(h).padStart(2, '0');
-    em.textContent = String(m).padStart(2, '0');
-    es.textContent = String(s).padStart(2, '0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
   }
-  if (document.getElementById('cd-h')){ updateCountdown(); setInterval(updateCountdown, 1000); }
+  updateCountdown(); setInterval(updateCountdown, 1000);
 
   function renderBundles(){
     var list = document.getElementById('bundleList');
@@ -541,12 +558,19 @@
   function render(){ renderBundles(); renderSummary(); }
 
   (function renderShadeFinder(){
-    var host = document.getElementById('shadeFinderList');
-    SHADES.forEach(function(s){
-      var row = document.createElement('div');
-      row.className = 'shade-item';
-      row.innerHTML = '<div class="swatch-lg" style="background:' + s.hex + '"></div><div><h4>' + s.name + '</h4><p>' + s.desc + '</p></div>';
-      host.appendChild(row);
+    var btns = document.querySelectorAll('.shade-btn');
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        btns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var name = btn.getAttribute('data-shade');
+        document.getElementById('sdName').textContent = name;
+        var shade = SHADES.filter(function(s){ return s.name === name; })[0];
+        if (shade) document.getElementById('sdMatch').textContent = shade.desc;
+        state.shade = name;
+        state.shades = [name];
+        render();
+      });
     });
   })();
 

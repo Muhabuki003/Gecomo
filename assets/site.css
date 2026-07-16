@@ -170,6 +170,19 @@ details[open] .chev{transform:rotate(180deg);}
   .shade-band .copy{padding:60px 64px;}
 }
 
+/* --- Swatch selector overlay (ILIA-style) --- */
+.swatch-selector{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:16px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);padding:12px 20px;border-radius:999px;box-shadow:0 4px 20px rgba(0,0,0,.1);z-index:2;}
+.shade-btn{width:44px;height:44px;border-radius:999px;border:3px solid var(--border-2);cursor:pointer;padding:0;transition:all .2s;}
+.shade-btn:hover{border-color:var(--brown);transform:scale(1.1);}
+.shade-btn.active{border-color:var(--ink);box-shadow:0 0 0 3px var(--cream),0 0 0 5px var(--brown);}
+.shade-detail{margin-top:20px;padding:16px 20px;background:var(--white);border:1px solid var(--border);}
+.shade-name{font-size:20px;font-weight:600;margin-bottom:4px;}
+.shade-match{font-size:14px;color:var(--body);line-height:1.5;}
+@media (max-width:720px){
+  .swatch-selector{bottom:16px;padding:10px 16px;gap:12px;}
+  .shade-btn{width:36px;height:36px;border-width:2px;}
+}
+
 /* --- Values band (numbered, no icons) --- */
 #values{background:var(--cream-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 0;}
 .values-head{max-width:680px;}
