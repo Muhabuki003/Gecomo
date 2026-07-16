@@ -44,7 +44,6 @@
           '<a href="stamp.html">Brow Stamp</a>' +
           '<a href="pencil.html">Brow Pencil</a>' +
           '<a href="index.html#sets">Sets + Duos</a>' +
-          '<a href="stamp.html#shades">Find My Shade</a>' +
         '</nav>' +
         '<nav class="menu-sub">' +
           '<a href="track.html">Track Order</a>' +
