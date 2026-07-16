@@ -37,30 +37,32 @@
     var wrap = document.createElement('div');
     wrap.innerHTML =
       '<div id="overlay"></div>' +
-      '<aside id="menuDrawer" aria-label="Menu">' +
+      '<div id="menuDrawer" role="dialog" aria-modal="true" aria-label="Menu">' +
         '<div class="menu-head"><a href="index.html" class="logo">GECOMO</a><button id="closeMenu" type="button" aria-label="Close menu">&times;</button></div>' +
-        '<nav class="menu-links">' +
+        '<nav class="menu-links" aria-label="Shop menu">' +
           '<a href="index.html#shop">Shop All</a>' +
           '<a href="stamp.html">Brow Stamp</a>' +
           '<a href="pencil.html">Brow Pencil</a>' +
           '<a href="index.html#sets">Sets + Duos</a>' +
         '</nav>' +
-        '<nav class="menu-sub">' +
+        '<nav class="menu-sub" aria-label="Support menu">' +
           '<a href="track.html">Track Order</a>' +
           '<a href="stamp.html#faq">FAQ</a>' +
-          '<a href="index.html#guarantee">60-Day Guarantee</a>' +
+          '<a href="stamp.html#guarantee">60-Day Guarantee</a>' +
           '<a href="stamp.html#guide">Free Brow Playbook</a>' +
+          '<a href="privacy.html">Privacy Policy</a>' +
+          '<a href="terms.html">Terms of Service</a>' +
         '</nav>' +
-      '</aside>' +
-      '<aside id="cartDrawer">' +
-        '<div class="cart-head"><h3>Your cart</h3><button id="closeCart" type="button">&times;</button></div>' +
+      '</div>' +
+      '<div id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">' +
+        '<div class="cart-head"><h3>Your cart</h3><button id="closeCart" type="button" aria-label="Close cart">&times;</button></div>' +
         '<div id="cartItems"></div>' +
         '<div class="cart-foot">' +
           '<div class="cart-subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>' +
           '<button id="checkoutBtn" class="btn btn-dark" type="button">Checkout</button>' +
           '<p id="checkoutNote" style="display:none;"></p>' +
         '</div>' +
-      '</aside>';
+      '</div>';
     while (wrap.firstChild) document.body.appendChild(wrap.firstChild);
   }
 
@@ -195,6 +197,7 @@
     if (menuBtn) menuBtn.addEventListener('click', openMenu);
     var closeMenuBtn = document.getElementById('closeMenu');
     if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeAll);
+    document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') closeAll(); });
     renderCart();
     updateCount();
   }

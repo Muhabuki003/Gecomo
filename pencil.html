@@ -8,12 +8,15 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FAF6F1'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%231C1712'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=6">
 </head>
 <body>
 
-<div id="promoBar"><a href="stamp.html#guide">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div id="promoBar" role="region" aria-label="Announcement"><a href="stamp.html#guide">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
 
 <header class="site-head">
   <div class="masthead">
@@ -27,21 +30,22 @@
       </button>
     </div>
   </div>
-  <nav class="navrow">
+  <nav class="navrow" aria-label="Primary">
     <a href="index.html#shop">All</a>
     <a href="index.html#sets">Sets</a>
     <a href="track.html">Track Order</a>
   </nav>
 </header>
 
-<div id="launchBar">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
+<div id="launchBar" role="region" aria-label="Promotion">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
 
+<main id="main">
 <!-- PDP top (ILIA anatomy): breadcrumb -> badge/title/price/rating -> gallery -> buy controls -->
 <section id="buy" class="pdp-buy">
   <div class="wrap pdp-grid">
 
     <div class="pdp-head">
-      <nav class="crumbs"><a href="index.html">Home</a><span>›</span><a href="index.html#shop">Brows</a><span>›</span><span>Brow Pencil</span></nav>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>›</span><a href="index.html#shop">Brows</a><span>›</span><span>Brow Pencil</span></nav>
       <span class="pdp-badge">New</span>
       <h1 class="pdp-name">Waterproof Brow Pencil &amp; Liner</h1>
       <div class="pdp-price"><span id="heroPrice">$29.99</span> <del>$44.99</del> <span class="cur">USD</span></div>
@@ -50,7 +54,7 @@
 
     <div class="pdp-gallery">
       <div class="gallery-main">
-        <img id="mainImg" src="https://cdn.shopify.com/s/files/1/1010/2482/5658/files/dbf2a140-4382-43d4-bc5b-7d801499c621.jpg?v=1784046043" alt="GECOMO Waterproof Dual-Ended Eyebrow Pencil">
+        <img id="mainImg" fetchpriority="high" decoding="async" src="https://cdn.shopify.com/s/files/1/1010/2482/5658/files/dbf2a140-4382-43d4-bc5b-7d801499c621.jpg?v=1784046043" alt="GECOMO Waterproof Dual-Ended Eyebrow Pencil">
       </div>
       <div class="thumbs" id="thumbs"></div>
     </div>
@@ -296,48 +300,50 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="foot-grid">
     <div class="foot-news">
       <a href="index.html" class="logo">GECOMO</a>
-      <h4>Get 15% off your first order</h4>
+      <h3>Get 15% off your first order</h3>
       <form class="news-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Done ✓';">
-        <input type="email" placeholder="Email address" required>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
         <button type="submit">Sign up →</button>
       </form>
     </div>
     <div class="foot-col">
-      <h5>Shop</h5>
+      <h4>Shop</h4>
       <a href="index.html#collection">Shop All</a>
       <a href="stamp.html">Brow Stamp</a>
       <a href="pencil.html">Brow Pencil</a>
       <a href="stamp.html#guide">Free Brow Playbook</a>
     </div>
     <div class="foot-col">
-      <h5>Support</h5>
+      <h4>Support</h4>
       <a href="track.html">Track Order</a>
       <a href="stamp.html#faq">FAQ</a>
-      <a href="index.html#guarantee">60-Day Guarantee</a>
+      <a href="stamp.html#guarantee">60-Day Guarantee</a>
       <a href="/cdn-cgi/l/email-protection#a5cdc0c9c9cae5c2c0c6cac8ca8bc6cac8">Contact Us</a>
     </div>
     <div class="foot-col">
-      <h5>About</h5>
+      <h4>About</h4>
       <a href="index.html#ethos">Our Ethos</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#ugc">#GECOMO</a>
     </div>
   </div>
-  <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
+  <p class="copyright">© 2026 GECOMO. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
 </footer>
 
 <!-- Sticky add-to-cart bar -->
-<div id="stickyBar">
+<div id="stickyBar" role="region" aria-label="Quick add to cart">
   <span class="info">Dual-Ended Brow Pencil · <strong id="stickyPrice">$29.99</strong><del id="stickyCompare">$44.99</del></span>
   <button id="stickyAdd" type="button">Add to cart</button>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/shopify.js?v=3"></script>
-<script src="assets/cart.js?v=6"></script>
+<script src="assets/cart.js?v=8"></script>
 <script>
 (function(){
   "use strict";
@@ -576,7 +582,7 @@
     SHADES.forEach(function(s){
       var row = document.createElement('div');
       row.className = 'shade-item';
-      row.innerHTML = '<div class="swatch-lg" style="background:' + s.hex + '"></div><div><h4>' + s.name + '</h4><p>' + s.desc + '</p></div>';
+      row.innerHTML = '<div class="swatch-lg" style="background:' + s.hex + '"></div><div><h3>' + s.name + '</h3><p>' + s.desc + '</p></div>';
       host.appendChild(row);
     });
   })();
@@ -610,6 +616,7 @@
     slides.forEach(function(_, i){
       var d = document.createElement('button');
       d.className = 'dot' + (i === 0 ? ' active' : ''); d.type = 'button';
+      d.setAttribute('aria-label', 'Show review ' + (i + 1));
       d.addEventListener('click', function(){ show(i); });
       dotsHost.appendChild(d);
     });

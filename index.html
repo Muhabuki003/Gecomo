@@ -8,8 +8,10 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23FBFAF8'/%3E%3Ctext x='32' y='44' font-family='Helvetica,sans-serif' font-size='38' text-anchor='middle' fill='%23121212'%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=6">
 <style>
   /* UGC video carousel (homepage only) */
   #ugc{padding:72px 0 96px;overflow:hidden;text-align:center;}
@@ -59,16 +61,19 @@
   .review-card .rstars{color:var(--ink);letter-spacing:2px;margin:8px 0 10px;}
   .review-card blockquote{margin:0;font-size:15px;line-height:1.6;color:var(--ink-2);}
 
-  /* guarantee band */
-  #guarantee{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
-  #guarantee h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
-  #guarantee p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
+  /* free shipping band */
+  #shipping{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
+  #shipping .eyebrow{color:#C9B49E;}
+  #shipping h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
+  #shipping p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <!-- ILIA anatomy: announcement bar -->
-<div id="promoBar"><a href="stamp.html">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
+<div id="promoBar" role="region" aria-label="Announcement"><a href="stamp.html">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
 
 <!-- Masthead: hamburger / logo / bag -->
 <header class="site-head">
@@ -83,7 +88,7 @@
       </button>
     </div>
   </div>
-  <nav class="navrow">
+  <nav class="navrow" aria-label="Primary">
     <a href="#shop" class="active">All</a>
     <a href="#sets">Sets</a>
     <a href="track.html">Track Order</a>
@@ -91,11 +96,12 @@
 </header>
 
 <!-- Launch strip -->
-<div id="launchBar">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
+<div id="launchBar" role="region" aria-label="Promotion">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
 
 <!-- Full-bleed campaign hero -->
+<main id="main">
 <header class="home-hero" id="top">
-  <video autoplay muted loop playsinline poster="hero-poster.jpg">
+  <video autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg" aria-hidden="true" disablepictureinpicture disableremoteplayback>
     <source src="gecomo-campaign.mp4" type="video/mp4">
   </video>
   <div class="scrim"></div>
@@ -311,49 +317,52 @@
   </div>
 </section>
 
-<!-- Guarantee -->
-<section id="guarantee">
-  <h2>Love your brows or it's free.</h2>
-  <p>Try any GECOMO product for 60 days. If it doesn't give you fuller, more natural brows in less time, send it back — even used — for a full refund.</p>
+<!-- Free shipping promise -->
+<section id="shipping">
+  <p class="eyebrow">Our Mission</p>
+  <h2>Free shipping on every GECOMO order.</h2>
+  <p>Effortless beauty shouldn't come with fine print. Every GECOMO order ships free — no minimums, no codes, no surprises at checkout. It's part of our mission, and our gift to you.</p>
   <a href="#shop" class="btn btn-ghost">Shop the Collection</a>
 </section>
+</main>
 
 <footer>
   <div class="foot-grid">
     <div class="foot-news">
       <a href="index.html" class="logo">GECOMO</a>
-      <h4>Get 15% off your first order</h4>
+      <h3>Get 15% off your first order</h3>
       <form class="news-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Done ✓';">
-        <input type="email" placeholder="Email address" required>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
         <button type="submit">Sign up →</button>
       </form>
     </div>
     <div class="foot-col">
-      <h5>Shop</h5>
+      <h4>Shop</h4>
       <a href="bestsellers.html">Bestsellers</a>
       <a href="stamp.html">Brow Stamp</a>
       <a href="pencil.html">Brow Pencil</a>
       <a href="stamp.html#guide">Free Brow Playbook</a>
     </div>
     <div class="foot-col">
-      <h5>Support</h5>
+      <h4>Support</h4>
       <a href="track.html">Track Order</a>
       <a href="stamp.html#faq">FAQ</a>
-      <a href="index.html#guarantee">60-Day Guarantee</a>
+      <a href="stamp.html#guarantee">60-Day Guarantee</a>
       <a href="/cdn-cgi/l/email-protection#f29a979e9e9db29597919d9f9ddc919d9f">Contact Us</a>
     </div>
     <div class="foot-col">
-      <h5>About</h5>
+      <h4>About</h4>
       <a href="index.html#values">Our Ethos</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#ugc">#GECOMO</a>
     </div>
   </div>
-  <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
+  <p class="copyright">© 2026 GECOMO. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/shopify.js?v=3"></script>
-<script src="assets/cart.js?v=6"></script>
+<script src="assets/cart.js?v=8"></script>
+<script src="assets/autoplay.js?v=1"></script>
 <script>
 // Bestsellers rail arrows
 (function(){
@@ -455,8 +464,11 @@
 
     var video = document.createElement('video');
     video.src = it.video;
-    video.muted = true; video.loop = true; video.playsInline = true;
-    video.setAttribute('playsinline', ''); video.setAttribute('muted', '');
+    video.muted = true; video.defaultMuted = true; video.loop = true; video.playsInline = true;
+    video.setAttribute('playsinline', ''); video.setAttribute('webkit-playsinline', ''); video.setAttribute('muted', '');
+    video.setAttribute('preload', 'auto');
+    video.setAttribute('aria-hidden', 'true');
+    video.disablePictureInPicture = true;
     video.autoplay = true;
     card.appendChild(video);
 
@@ -469,9 +481,11 @@
     controls.className = 'ugc-controls';
     var muteBtn = document.createElement('button');
     muteBtn.className = 'ugc-btn'; muteBtn.type = 'button';
+    muteBtn.setAttribute('aria-label', 'Unmute video');
     muteBtn.innerHTML = ICON.muted;
     var playBtn = document.createElement('button');
     playBtn.className = 'ugc-btn'; playBtn.type = 'button';
+    playBtn.setAttribute('aria-label', 'Pause video');
     playBtn.innerHTML = ICON.pause;
     controls.appendChild(muteBtn);
     controls.appendChild(playBtn);
@@ -484,7 +498,7 @@
       '<img alt="" src="' + FALLBACK.img + '">' +
       '<span class="info"><span class="pname">' + FALLBACK.title + '</span>' +
       '<span class="pprice">' + FALLBACK.price + '</span></span>' +
-      '<span class="padd" aria-label="Add to cart">+</span>';
+      '<button type="button" class="padd" aria-label="Add to cart">+</button>';
     card.appendChild(prod);
 
     stage.appendChild(card);
@@ -532,12 +546,13 @@
       var v = cards[active].video;
       v.muted = !v.muted;
       muteBtn.innerHTML = v.muted ? ICON.muted : ICON.unmuted;
+      muteBtn.setAttribute('aria-label', v.muted ? 'Unmute video' : 'Mute video');
     });
     playBtn.addEventListener('click', function(e){
       e.stopPropagation();
       var v = cards[active].video;
-      if (v.paused){ v.play(); playBtn.innerHTML = ICON.pause; start(); }
-      else { v.pause(); playBtn.innerHTML = ICON.play; stop(); }
+      if (v.paused){ delete v.dataset.userPaused; v.play(); playBtn.innerHTML = ICON.pause; playBtn.setAttribute('aria-label', 'Pause video'); start(); }
+      else { v.dataset.userPaused = '1'; v.pause(); playBtn.innerHTML = ICON.play; playBtn.setAttribute('aria-label', 'Play video'); stop(); }
     });
   });
 
@@ -564,6 +579,7 @@
       if (i === active){
         c.playBtn.innerHTML = c.video.paused ? ICON.play : ICON.pause;
         c.muteBtn.innerHTML = c.video.muted ? ICON.muted : ICON.unmuted;
+        delete c.video.dataset.userPaused;
         var pr = c.video.play(); if (pr && pr.catch) pr.catch(function(){});
       } else {
         c.video.muted = true; // only the focused clip may carry sound
