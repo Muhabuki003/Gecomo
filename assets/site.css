@@ -363,6 +363,11 @@ header.pdp-hero .scrim{position:absolute;inset:0;background:linear-gradient(to b
 .offer-box .ob-media.media-slot::before{content:'';padding:0;} /* too small for the filename overlay — plain dashed box */
 .offer-box .ob-media img{width:100%;height:100%;object-fit:cover;}
 .offer-box p{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:0;}
+.bundle-includes{display:grid;gap:10px;margin-bottom:18px;}
+.bundle-line{display:flex;gap:14px;align-items:center;border:1px solid var(--border-2);padding:12px 14px;text-decoration:none;color:inherit;}
+.bundle-line img{width:52px;height:52px;flex:0 0 auto;object-fit:cover;border-radius:2px;}
+.bundle-line strong{display:block;font-size:14.5px;color:var(--ink);}
+.bundle-line span{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px;}
 .perk-list{display:grid;gap:10px;margin-top:18px;font-size:13.5px;color:var(--ink-2);}
 .pdp-desc{border-top:1px solid var(--border-2);margin-top:26px;}
 .pdp-desc summary{display:flex;align-items:center;justify-content:space-between;padding:18px 0;font-size:15px;font-weight:500;}

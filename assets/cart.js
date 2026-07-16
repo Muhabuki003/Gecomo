@@ -43,7 +43,7 @@
           '<a href="index.html#shop">Shop All</a>' +
           '<a href="stamp.html">Brow Stamp</a>' +
           '<a href="pencil.html">Brow Pencil</a>' +
-          '<a href="index.html#sets">Sets + Duos</a>' +
+          '<a href="bundle.html">Sets + Duos</a>' +
         '</nav>' +
         '<nav class="menu-sub">' +
           '<a href="track.html">Track Order</a>' +
