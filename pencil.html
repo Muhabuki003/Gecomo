@@ -9,9 +9,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=6">
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <div id="promoBar"><a href="stamp.html#guide">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
 
@@ -21,9 +23,9 @@
     <a href="index.html" class="logo">GECOMO</a>
     <div class="mast-icons">
       <a class="mast-link" href="track.html">Track Order</a>
-      <button id="cartBtn" type="button" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
-        <span id="cartCount">0</span>
+      <button id="cartBtn" type="button" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span id="cartCount" aria-hidden="true">0</span>
       </button>
     </div>
   </div>
@@ -36,6 +38,8 @@
 
 <div id="launchBar">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
 
+<main id="main">
+
 <!-- PDP top (ILIA anatomy): breadcrumb -> badge/title/price/rating -> gallery -> buy controls -->
 <section id="buy" class="pdp-buy">
   <div class="wrap pdp-grid">
@@ -45,7 +49,7 @@
       <span class="pdp-badge">New</span>
       <h1 class="pdp-name">Waterproof Brow Pencil &amp; Liner</h1>
       <div class="pdp-price"><span id="heroPrice">$29.99</span> <del>$44.99</del> <span class="cur">USD</span></div>
-      <a class="pdp-rating" href="#reviews">4.9 <span class="rs">★★★★★</span> <u>New &amp; loved</u> ↓</a>
+      <a class="pdp-rating" href="#reviews">4.9 <span class="rs" aria-hidden="true">★★★★★</span> <u>New &amp; loved</u> ↓</a>
     </div>
 
     <div class="pdp-gallery">
@@ -253,11 +257,11 @@
   <div class="review-grid" id="reviewGrid"></div>
 </section>
 
-<!-- Guarantee -->
-<section id="guarantee">
-  <h2>Love it or it's free.</h2>
-  <p>Try the GECOMO brow pencil for 60 days. If it doesn't give you fuller, more natural brows, send it back for a full refund.</p>
-  <a href="#buy" class="btn btn-gold">Try it risk-free</a>
+<!-- Free shipping -->
+<section id="shipping">
+  <h2>Free shipping on every order.</h2>
+  <p>All GECOMO orders ship free — no minimums, no codes, no surprises at checkout. It's our gift to you, on every single order.</p>
+  <a href="#buy" class="btn btn-gold">Shop now</a>
 </section>
 
 <!-- FAQ -->
@@ -296,13 +300,15 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="foot-grid">
     <div class="foot-news">
       <a href="index.html" class="logo">GECOMO</a>
       <h4>Get 15% off your first order</h4>
       <form class="news-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Done ✓';">
-        <input type="email" placeholder="Email address" required>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
         <button type="submit">Sign up →</button>
       </form>
     </div>
@@ -317,7 +323,7 @@
       <h5>Support</h5>
       <a href="track.html">Track Order</a>
       <a href="stamp.html#faq">FAQ</a>
-      <a href="index.html#guarantee">60-Day Guarantee</a>
+      <a href="index.html#shipping">Free Shipping</a>
       <a href="/cdn-cgi/l/email-protection#a5cdc0c9c9cae5c2c0c6cac8ca8bc6cac8">Contact Us</a>
     </div>
     <div class="foot-col">
@@ -325,6 +331,8 @@
       <a href="index.html#ethos">Our Ethos</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#ugc">#GECOMO</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
     </div>
   </div>
   <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
@@ -337,7 +345,7 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/shopify.js?v=3"></script>
-<script src="assets/cart.js?v=6"></script>
+<script src="assets/cart.js?v=7"></script>
 <script>
 (function(){
   "use strict";

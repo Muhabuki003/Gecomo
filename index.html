@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=5">
+<link rel="stylesheet" href="assets/site.css?v=6">
 <style>
   /* UGC video carousel (homepage only) */
   #ugc{padding:72px 0 96px;overflow:hidden;text-align:center;}
@@ -59,13 +59,15 @@
   .review-card .rstars{color:var(--ink);letter-spacing:2px;margin:8px 0 10px;}
   .review-card blockquote{margin:0;font-size:15px;line-height:1.6;color:var(--ink-2);}
 
-  /* guarantee band */
-  #guarantee{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
-  #guarantee h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
-  #guarantee p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
+  /* free-shipping band */
+  #shipping{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
+  #shipping h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
+  #shipping p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ILIA anatomy: announcement bar -->
 <div id="promoBar"><a href="stamp.html">Take a free Brow Playbook w/ any brow kit + more</a><span class="arr">&rarr;</span></div>
@@ -77,14 +79,14 @@
     <a href="index.html" class="logo">GECOMO</a>
     <div class="mast-icons">
       <a class="mast-link" href="track.html">Track Order</a>
-      <button id="cartBtn" type="button" aria-label="Cart">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
-        <span id="cartCount">0</span>
+      <button id="cartBtn" type="button" aria-label="Cart, 0 items">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 8h13l-1.1 13h-10.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span id="cartCount" aria-hidden="true">0</span>
       </button>
     </div>
   </div>
-  <nav class="navrow">
-    <a href="#shop" class="active">All</a>
+  <nav class="navrow" aria-label="Primary">
+    <a href="#shop" class="active" aria-current="page">All</a>
     <a href="#sets">Sets</a>
     <a href="track.html">Track Order</a>
   </nav>
@@ -92,6 +94,8 @@
 
 <!-- Launch strip -->
 <div id="launchBar">Waterproof Brow Pencil&mdash;now in Light Brown | <a href="pencil.html">Shop Now</a></div>
+
+<main id="main">
 
 <!-- Full-bleed campaign hero -->
 <header class="home-hero" id="top">
@@ -116,6 +120,9 @@
 (function(){
   var v = document.getElementById('heroVideo');
   if (!v) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    v.removeAttribute('autoplay'); v.pause(); return;
+  }
   v.muted = true; v.defaultMuted = true; v.removeAttribute('controls');
   function kick(){
     if (!v.paused && !v.ended) return;
@@ -153,10 +160,10 @@
           <span class="flag">Best Seller</span>
         </div>
         <div class="rc-body">
-          <div class="rc-stars">★★★★★ <span>4.8 (2,300+)</span></div>
+          <div class="rc-stars" role="img" aria-label="Rated 4.8 out of 5 stars, over 2,300 reviews">★★★★★ <span>4.8 (2,300+)</span></div>
           <h3>Double Seal Brow Stamp Kit</h3>
           <p class="rc-desc">Stamp on symmetrical, natural-looking brows in 10 seconds.</p>
-          <div class="rc-shades"><i style="background:#4A3728;"></i><i style="background:#8B6A4F;"></i> 2 shades</div>
+          <div class="rc-shades"><i style="background:#4A3728;" aria-hidden="true"></i><i style="background:#8B6A4F;" aria-hidden="true"></i> 2 shades</div>
           <div class="rc-price">$39.99 <del>$59.99</del></div>
           <span class="rc-cta">Shop the Stamp</span>
         </div>
@@ -168,29 +175,29 @@
           <span class="flag">New</span>
         </div>
         <div class="rc-body">
-          <div class="rc-stars">★★★★★ <span>4.9 (new)</span></div>
+          <div class="rc-stars" role="img" aria-label="Rated 4.9 out of 5 stars, new product">★★★★★ <span>4.9 (new)</span></div>
           <h3>Waterproof Brow Pencil</h3>
           <p class="rc-desc">A 4D micro-carved tip that draws fine, hair-like strokes.</p>
-          <div class="rc-shades"><i style="background:#4A3728;"></i><i style="background:#8B6A4F;"></i> 2 shades</div>
+          <div class="rc-shades"><i style="background:#4A3728;" aria-hidden="true"></i><i style="background:#8B6A4F;" aria-hidden="true"></i> 2 shades</div>
           <div class="rc-price">$29.99 <del>$44.99</del></div>
           <span class="rc-cta">Shop the Pencil</span>
         </div>
       </a>
 
-      <a class="rail-card" href="stamp.html#buy">
+      <div class="rail-card coming-soon" aria-disabled="true">
         <div class="media media-slot" data-file="assets/media/cat-sets.jpg">
-          <img src="assets/media/cat-sets.jpg" alt="GECOMO Brow Duo — stamp and pencil set" loading="lazy" onerror="this.classList.add('media-missing')">
-          <span class="flag">Set</span>
+          <img src="assets/media/cat-sets.jpg" alt="GECOMO Brow Duo — stamp and pencil set (coming soon)" loading="lazy" onerror="this.classList.add('media-missing')">
+          <span class="flag">Coming Soon</span>
         </div>
         <div class="rc-body">
-          <div class="rc-stars">★★★★★ <span>4.8 (860+)</span></div>
+          <div class="rc-stars" role="img" aria-label="Rated 4.8 out of 5 stars, over 860 reviews">★★★★★ <span>4.8 (860+)</span></div>
           <h3>The Brow Duo — Stamp + Pencil</h3>
           <p class="rc-desc">The full brow wardrobe: stamp for shape, pencil for detail.</p>
-          <div class="rc-shades"><i style="background:#4A3728;"></i><i style="background:#8B6A4F;"></i> 2 shades</div>
+          <div class="rc-shades"><i style="background:#4A3728;" aria-hidden="true"></i><i style="background:#8B6A4F;" aria-hidden="true"></i> 2 shades</div>
           <div class="rc-price">$59.99 <del>$69.98</del></div>
-          <span class="rc-cta">Shop the Set</span>
+          <span class="rc-cta">Coming Soon — Not Yet Available</span>
         </div>
-      </a>
+      </div>
 
       <a class="rail-card" href="stamp.html#guide">
         <div class="media media-slot" data-file="assets/media/cat-playbook.jpg">
@@ -198,7 +205,7 @@
           <span class="flag">Free Gift</span>
         </div>
         <div class="rc-body">
-          <div class="rc-stars">★★★★★ <span>Reader favorite</span></div>
+          <div class="rc-stars" role="img" aria-label="Five stars, reader favorite">★★★★★ <span>Reader favorite</span></div>
           <h3>The Brow Playbook</h3>
           <p class="rc-desc">Our step-by-step guide to your best natural brows.</p>
           <div class="rc-shades">Digital + print</div>
@@ -230,12 +237,12 @@
       </div>
       <div class="cat-label"><span>Brow Pencils</span><span>&rarr;</span></div>
     </a>
-    <a class="cat-card" id="sets" href="stamp.html#buy">
+    <div class="cat-card coming-soon" id="sets" aria-disabled="true">
       <div class="media media-slot" data-file="assets/media/cat-sets.jpg">
-        <img src="assets/media/cat-sets.jpg" alt="Sets and duos" loading="lazy" onerror="this.classList.add('media-missing')">
+        <img src="assets/media/cat-sets.jpg" alt="Sets and duos (coming soon)" loading="lazy" onerror="this.classList.add('media-missing')">
       </div>
-      <div class="cat-label"><span>Sets + Duos</span><span>&rarr;</span></div>
-    </a>
+      <div class="cat-label"><span>Sets + Duos</span><span class="cs-tag">Coming Soon</span></div>
+    </div>
     <a class="cat-card" href="stamp.html#guide">
       <div class="media media-slot" data-file="assets/media/cat-playbook.jpg">
         <img src="assets/media/cat-playbook.jpg" alt="The Brow Playbook" loading="lazy" onerror="this.classList.add('media-missing')">
@@ -339,12 +346,14 @@
   </div>
 </section>
 
-<!-- Guarantee -->
-<section id="guarantee">
-  <h2>Love your brows or it's free.</h2>
-  <p>Try any GECOMO product for 60 days. If it doesn't give you fuller, more natural brows in less time, send it back — even used — for a full refund.</p>
+<!-- Free shipping -->
+<section id="shipping">
+  <h2>Free shipping on every order.</h2>
+  <p>All GECOMO orders ship free — no minimums, no codes, no surprises at checkout. It's our gift to you, on every single order.</p>
   <a href="#shop" class="btn btn-ghost">Shop the Collection</a>
 </section>
+
+</main>
 
 <footer>
   <div class="foot-grid">
@@ -352,7 +361,7 @@
       <a href="index.html" class="logo">GECOMO</a>
       <h4>Get 15% off your first order</h4>
       <form class="news-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Done ✓';">
-        <input type="email" placeholder="Email address" required>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
         <button type="submit">Sign up →</button>
       </form>
     </div>
@@ -367,7 +376,7 @@
       <h5>Support</h5>
       <a href="track.html">Track Order</a>
       <a href="stamp.html#faq">FAQ</a>
-      <a href="index.html#guarantee">60-Day Guarantee</a>
+      <a href="index.html#shipping">Free Shipping</a>
       <a href="/cdn-cgi/l/email-protection#f29a979e9e9db29597919d9f9ddc919d9f">Contact Us</a>
     </div>
     <div class="foot-col">
@@ -375,13 +384,15 @@
       <a href="index.html#values">Our Ethos</a>
       <a href="index.html#reviews">Reviews</a>
       <a href="index.html#ugc">#GECOMO</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
     </div>
   </div>
   <p class="copyright">© 2026 GECOMO. All rights reserved.</p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/shopify.js?v=3"></script>
-<script src="assets/cart.js?v=6"></script>
+<script src="assets/cart.js?v=7"></script>
 <script>
 // Bestsellers rail arrows
 (function(){
