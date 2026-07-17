@@ -48,12 +48,14 @@
         '<nav class="menu-sub">' +
           '<a href="track.html">Track Order</a>' +
           '<a href="stamp.html#faq">FAQ</a>' +
-          '<a href="index.html#guarantee">60-Day Guarantee</a>' +
+          '<a href="index.html#shipping">Free Shipping</a>' +
           '<a href="stamp.html#guide">Free Brow Playbook</a>' +
+          '<a href="privacy.html">Privacy Policy</a>' +
+          '<a href="terms.html">Terms of Service</a>' +
         '</nav>' +
       '</aside>' +
-      '<aside id="cartDrawer">' +
-        '<div class="cart-head"><h3>Your cart</h3><button id="closeCart" type="button">&times;</button></div>' +
+      '<aside id="cartDrawer" aria-label="Shopping cart">' +
+        '<div class="cart-head"><h3>Your cart</h3><button id="closeCart" type="button" aria-label="Close cart">&times;</button></div>' +
         '<div id="cartItems"></div>' +
         '<div class="cart-foot">' +
           '<div class="cart-subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>' +
@@ -81,6 +83,8 @@
       return s + (c.lines || []).reduce(function(a, l){ return a + (l.qty || 1); }, 0);
     }, 0);
     if (e.count) e.count.textContent = qty;
+    var btn = document.getElementById('cartBtn');
+    if (btn) btn.setAttribute('aria-label', 'Cart, ' + qty + (qty === 1 ? ' item' : ' items'));
   }
 
   function renderCart(){
@@ -183,6 +187,13 @@
   // ---- Wire up once DOM is ready ----
   function init(){
     injectMarkup();
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        Array.prototype.forEach.call(document.querySelectorAll('video[autoplay]'), function(v){
+          v.removeAttribute('autoplay'); v.pause();
+        });
+      }
+    } catch(err){}
     var e = els();
     if (e.overlay) e.overlay.addEventListener('click', closeAll);
     var closeBtn = document.getElementById('closeCart');

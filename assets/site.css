@@ -12,6 +12,16 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
+/* --- Accessibility ------------------------------------------------------- */
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--ink);color:#fff;padding:12px 22px;font-size:14px;letter-spacing:.05em;}
+.skip-link:focus{left:0;}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:'Jost','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;}
 h1,h2,h3{font-family:'Jost','Helvetica Neue',sans-serif;font-weight:400;margin:0;letter-spacing:-.01em;}
 p{margin:0;}
@@ -151,6 +161,19 @@ details[open] .chev{transform:rotate(180deg);}
 .cat-card .media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
 .cat-card:hover .media img{transform:scale(1.04);}
 .cat-card .cat-label{display:flex;justify-content:space-between;align-items:center;padding:12px 2px 0;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);}
+
+/* --- Coming soon (non-purchasable) cards --------------------------------- */
+.coming-soon{cursor:default;}
+.coming-soon .media{position:relative;}
+.coming-soon .media img{filter:grayscale(70%);}
+.coming-soon .media::after{content:'';position:absolute;inset:0;z-index:1;background:rgba(243,239,233,.5);}
+.coming-soon:hover .media img{transform:none;}
+.coming-soon .flag{background:var(--ink);color:var(--cream);}
+.coming-soon .rc-cta{border-color:var(--border-2);background:var(--cream-2);color:var(--muted);pointer-events:none;}
+.coming-soon .rc-cta:hover{background:var(--cream-2);color:var(--muted);}
+.coming-soon .rc-price,.coming-soon h3,.coming-soon .rc-desc{color:var(--muted);}
+.coming-soon .cat-label{color:var(--muted);}
+.cs-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border-2);background:var(--cream-2);padding:4px 9px;}
 @media (min-width:900px){
   #categories{padding:56px 0 88px;}
   .cat-grid2{grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 40px 0;}
@@ -545,14 +568,14 @@ header.pdp-hero .scrim{position:absolute;inset:0;background:linear-gradient(to b
   .review-grid{grid-template-columns:repeat(3,1fr);gap:28px;}
 }
 
-/* guarantee band */
-#guarantee{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
-#guarantee h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
-#guarantee p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
+/* free-shipping band (formerly guarantee band) */
+#shipping{background:var(--ink);color:var(--cream);text-align:center;padding:80px 28px;}
+#shipping h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:14px;color:#FBF7F1;}
+#shipping p{max-width:520px;margin:0 auto 28px;color:#D9D6D0;line-height:1.7;}
 @media (min-width:1440px){
-  #guarantee{padding:112px 28px;}
-  #guarantee h2{font-size:clamp(40px,3vw,48px);}
-  #guarantee p{max-width:600px;font-size:17px;}
+  #shipping{padding:112px 28px;}
+  #shipping h2{font-size:clamp(40px,3vw,48px);}
+  #shipping p{max-width:600px;font-size:17px;}
 }
 
 /* FAQ */
@@ -571,6 +594,7 @@ footer{border-top:1px solid var(--border);padding:72px 28px 130px;text-align:lef
 .foot-news h4{font-size:15px;font-weight:500;margin:0 0 12px;}
 .news-form{display:flex;border-bottom:1px solid var(--ink);max-width:340px;}
 .news-form input{flex:1;border:none;background:none;padding:12px 0;font:inherit;font-size:14px;outline:none;color:var(--ink);}
+.news-form input:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
 .news-form button{border:none;background:none;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);}
 .foot-col h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:500;}
 .foot-col a{display:block;font-size:14px;color:var(--ink);margin-bottom:11px;}
