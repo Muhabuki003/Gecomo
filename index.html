@@ -95,8 +95,9 @@
 
 <!-- Full-bleed campaign hero -->
 <header class="home-hero" id="top">
-  <video autoplay muted loop playsinline poster="hero-poster.jpg">
+  <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="hero-poster.jpg">
     <source src="gecomo-campaign.mp4" type="video/mp4">
+    <source src="gecomo-campaign.webm" type="video/webm">
   </video>
   <div class="scrim"></div>
   <div class="inner">
@@ -107,6 +108,33 @@
     </div>
   </div>
 </header>
+<script>
+/* Hero video: force autoplay everywhere. Muted inline playback is allowed by
+   every browser, but iOS Low Power Mode and some data-saver settings suspend
+   it and show a play glyph — so we retry on load, on tab return, and on the
+   user's very first touch/scroll/click anywhere on the page. */
+(function(){
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  v.muted = true; v.defaultMuted = true; v.removeAttribute('controls');
+  function kick(){
+    if (!v.paused && !v.ended) return;
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+  kick();
+  ['loadedmetadata','loadeddata','canplay','canplaythrough'].forEach(function(ev){
+    v.addEventListener(ev, kick);
+  });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) kick(); });
+  window.addEventListener('pageshow', kick);
+  ['touchstart','touchend','pointerdown','click','scroll','keydown'].forEach(function(ev){
+    window.addEventListener(ev, kick, { passive: true });
+  });
+  v.addEventListener('ended', kick);
+  v.addEventListener('pause', function(){ if (!document.hidden) setTimeout(kick, 200); });
+})();
+</script>
 
 <!-- Bestsellers rail -->
 <section id="shop">
@@ -136,7 +164,7 @@
 
       <a class="rail-card" href="pencil.html">
         <div class="media">
-          <img data-shopify-handle="waterproof-dual-ended-eyebrow-pencil" data-shopify-index="0" src="https://cdn.shopify.com/s/files/1/1010/2482/5658/files/1414F980-CA19-4D74-A6BA-4CB25DD54245.png?v=1784048173" alt="GECOMO waterproof dual-ended brow pencil">
+          <img data-shopify-handle="waterproof-dual-ended-eyebrow-pencil" data-shopify-index="0" src="assets/media/cat-pencils.jpg" alt="GECOMO waterproof dual-ended brow pencil">
           <span class="flag">New</span>
         </div>
         <div class="rc-body">
